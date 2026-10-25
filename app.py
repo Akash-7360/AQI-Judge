@@ -1,3 +1,7 @@
+"""
+Air Quality Index (AQI) Classification System
+Developed by Akash Uduthala
+"""
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -394,6 +398,13 @@ with st.sidebar:
           3. 📊 Naive Bayes (Gaussian)
         """
     )
+    render_html(
+        f"""
+        <div style="margin-top: 24px; padding-top: 10px; border-top: 1px solid rgba(148, 163, 184, 0.2); text-align: center; font-size: 0.72rem; color: {text_muted}; opacity: 0.6; letter-spacing: 0.2px;">
+            Developed by Akash Uduthala
+        </div>
+        """
+    )
 
 # ==============================================================================
 # Header Section
@@ -602,3 +613,11 @@ elif selected_view == "📊 Model Comparison & Reports":
         </div>
         """
     )
+
+render_html(
+    f"""
+    <div style="margin-top: 36px; padding: 14px 0 6px 0; text-align: center; font-size: 0.73rem; color: {text_muted}; opacity: 0.55; letter-spacing: 0.25px;">
+        Air Quality Classification System • Developed by Akash Uduthala
+    </div>
+    """
+)

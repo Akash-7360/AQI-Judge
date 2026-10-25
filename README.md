@@ -80,3 +80,11 @@ The dataset located in `data/air-quality-india.csv` contains hourly records acro
 - **Timestamp**: Date and time of observation
 - **PM2.5**: Fine particulate matter concentration in $\mu g/m^3$
 - **Hour / Month / Day / Year**: Temporal features for seasonal analysis
+
+---
+
+<div align="center">
+  <sub>Developed by Akash Uduthala • Air Quality Analytics Pipeline</sub>
+</div>
+
+<!-- Signature: Developed by Akash Uduthala | TNS AIML Project Identifier -->
