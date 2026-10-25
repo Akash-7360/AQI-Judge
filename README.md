@@ -1,6 +1,9 @@
 # 🍃 Air Quality Index (AQI) Machine Learning Dashboard
 
+[![Live Web Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-2ea44f?style=flat-square&logo=github)](https://akash-7360.github.io/TNSAIML-Training/)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=Akash-7360/TNSAIML-Training&branch=main&mainFilePath=app.py)
+
+🌐 **Live GitHub Pages Website:** [https://akash-7360.github.io/TNSAIML-Training/](https://akash-7360.github.io/TNSAIML-Training/)
 
 An interactive Machine Learning dashboard and predictive analytics system for Indian Air Quality Index (AQI) monitoring and category classification based on official Central Pollution Control Board (CPCB) standards.
 
@@ -9,6 +12,7 @@ An interactive Machine Learning dashboard and predictive analytics system for In
 ## 📁 Project Structure
 
 ```text
+├── index.html                                          # Live GitHub Pages interactive showcase & simulator
 ├── app.py                                              # Streamlit interactive web dashboard
 ├── model.joblib                                        # Serialized pre-trained classification models & evaluation cache
 ├── requirements.txt                                    # Python dependencies
