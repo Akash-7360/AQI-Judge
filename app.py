@@ -433,13 +433,30 @@ if selected_view == "🎯 Sample AQI Prediction":
     # Session state for inputs
     if "sample_pm" not in st.session_state:
         st.session_state["sample_pm"] = 65.0
+    if "pm_slider" not in st.session_state:
+        st.session_state["pm_slider"] = float(st.session_state["sample_pm"])
+    if "pm_num" not in st.session_state:
+        st.session_state["pm_num"] = float(st.session_state["sample_pm"])
     if "sample_hour" not in st.session_state:
         st.session_state["sample_hour"] = 14
     if "sample_month" not in st.session_state:
         st.session_state["sample_month"] = 10
 
+    def sync_from_num():
+        val = float(st.session_state["pm_num"])
+        st.session_state["sample_pm"] = val
+        st.session_state["pm_slider"] = val
+
+    def sync_from_slider():
+        val = float(st.session_state["pm_slider"])
+        st.session_state["sample_pm"] = val
+        st.session_state["pm_num"] = val
+
     def apply_preset(pm_val, hr_val, mo_val):
-        st.session_state["sample_pm"] = float(pm_val)
+        val = float(pm_val)
+        st.session_state["sample_pm"] = val
+        st.session_state["pm_num"] = val
+        st.session_state["pm_slider"] = val
         st.session_state["sample_hour"] = int(hr_val)
         st.session_state["sample_month"] = int(mo_val)
 
@@ -451,17 +468,35 @@ if selected_view == "🎯 Sample AQI Prediction":
     st.markdown("<div style='height: 6px'></div>", unsafe_allow_html=True)
 
     # Input Parameters Bar
-    st.markdown('<div class="clean-card" style="padding: 16px 20px;">', unsafe_allow_html=True)
-    col_in1, col_in2, col_in3 = st.columns([1.2, 1, 1])
-    with col_in1:
+    st.markdown('<div class="clean-card" style="padding: 18px 22px;">', unsafe_allow_html=True)
+    
+    # PM2.5 Concentration Input (Synchronized Number Input with +/- buttons and Range Slider)
+    col_pm_num, col_pm_slider = st.columns([1, 1.8])
+    with col_pm_num:
         pm_input = st.number_input(
             "PM2.5 Concentration (µg/m³)",
             min_value=1.0,
             max_value=500.0,
-            value=float(st.session_state["sample_pm"]),
             step=1.0,
-            help="Ambient PM2.5 sensor concentration"
+            key="pm_num",
+            on_change=sync_from_num,
+            help="Fine-tune with + / - buttons or enter an exact value"
         )
+    with col_pm_slider:
+        st.slider(
+            "Slide to Adjust PM2.5 Concentration",
+            min_value=1.0,
+            max_value=500.0,
+            step=1.0,
+            key="pm_slider",
+            on_change=sync_from_slider,
+            help="Drag slider to smoothly increase or decrease PM2.5 reading"
+        )
+
+    st.markdown(f'<div style="height: 1px; background: {border_color}; margin: 12px 0 16px 0; opacity: 0.5;"></div>', unsafe_allow_html=True)
+
+    # Temporal Parameters (Hour and Month)
+    col_in2, col_in3 = st.columns([1, 1])
     with col_in2:
         hour_input = st.slider("Hour of Day (0–23)", 0, 23, value=int(st.session_state["sample_hour"]))
     with col_in3:
