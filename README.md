@@ -1,5 +1,7 @@
 # 🍃 Air Quality Index (AQI) Machine Learning Dashboard
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=Akash-7360/TNSAIML-Training&branch=main&mainFilePath=app.py)
+
 An interactive Machine Learning dashboard and predictive analytics system for Indian Air Quality Index (AQI) monitoring and category classification based on official Central Pollution Control Board (CPCB) standards.
 
 ---
@@ -9,7 +11,6 @@ An interactive Machine Learning dashboard and predictive analytics system for In
 ```text
 ├── app.py                                              # Streamlit interactive web dashboard
 ├── model.joblib                                        # Serialized pre-trained classification models & evaluation cache
-├── aqi_model.pkl                                       # Serialized Random Forest AQI regressor
 ├── requirements.txt                                    # Python dependencies
 ├── data/
 │   └── air-quality-india.csv                          # Historical Indian air quality records (74,640 rows)
